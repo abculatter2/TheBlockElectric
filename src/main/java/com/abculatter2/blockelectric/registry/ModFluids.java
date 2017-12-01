@@ -1,13 +1,14 @@
 package com.abculatter2.blockelectric.registry;
 
 import com.abculatter2.blockelectric.TheBlockElectric;
+import com.abculatter2.blockelectric.common.fluid.BlockFluidFiniteCrafting;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -33,7 +34,7 @@ public class ModFluids {
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		event.getRegistry().register(new BlockFluidClassic(fluidMoltenIron, Material.LAVA).setRegistryName("molteniron").setUnlocalizedName(TheBlockElectric.MODID + ".molteniron"));
+		event.getRegistry().register(new BlockFluidFiniteCrafting(fluidMoltenIron, Material.WATER).setRegistryName("molteniron").setUnlocalizedName(TheBlockElectric.MODID + ".molteniron"));
 	}
 
 
