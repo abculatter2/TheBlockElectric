@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+
+///////////////////////////////////////////////////
+// IDE Settings
+///////////////////////////////////////////////////
+idea {
+    project {
+        languageLevel = '1.8'
+    }
+}
+
+version = project.mod_version + "." + project.mod_version_end
+group = "com.abculatter2.blockelectric"
+archivesBaseName = "TheBlockElectric"
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+minecraft {
+    version = project.minecraft_version + "-" + project.forge_version
+    runDir = "run"
+    mappings = project.mcp_mappings
+    makeObfSourceJar = false
+	useDepAts = true
+	replaceIn 'TheBlockElectric.java'
+	replace '${version}', project.version
+}
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.info'
+        include '**/*.properties'
+
+        // replace version and mcversion
+        expand ([
+                'version':project.version,
+                'mcversion':project.minecraft_version,
+                'forge_version': project.forge_version,
+                'mod_version': project.version,
+                'minecraft_version': project.minecraft_version
+        ])
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar {
+    manifest {
+        // attributes 'FMLAT': 'blockelectric_at.cfg'
+    }
+}
+
+repositories {
+    maven {
+        name 'progwm\'s maven' // JEI
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+}
+
+dependencies {   
+    deobfCompile "mezz.jei:jei_${project.minecraft_version}:${project.jei_version}"
+}
