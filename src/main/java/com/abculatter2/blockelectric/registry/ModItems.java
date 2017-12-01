@@ -1,9 +1,11 @@
 package com.abculatter2.blockelectric.registry;
 
 import com.abculatter2.blockelectric.TheBlockElectric;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -37,7 +39,16 @@ public class ModItems {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void registerModels(ModelRegistryEvent event) {
+		registerModel(pSteel, 0);
+		registerModel(obsidisteel, 0);
+		registerModel(plastic, 0);
+		registerModel(plasidian, 0);
+	}
 
+	private static void registerModel(Item item, int meta) {
+		if (item.getRegistryName() != null) {
+			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		}
 	}
 
 }
