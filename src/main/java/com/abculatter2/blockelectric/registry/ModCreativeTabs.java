@@ -13,7 +13,7 @@ public class ModCreativeTabs {
 		@Nonnull
 		@Override
 		public ItemStack getTabIconItem() {
-			return ItemStack.EMPTY; // TODO
+			return new ItemStack(ModItems.pSteel);
 		}
 
 	};

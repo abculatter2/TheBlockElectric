@@ -1,6 +1,7 @@
 package com.abculatter2.blockelectric;
 
 import com.abculatter2.blockelectric.proxy.CommonProxy;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -22,6 +23,9 @@ public class TheBlockElectric {
 	@Mod.Instance(TheBlockElectric.MODID)
 	public static TheBlockElectric instance;
 
+	static {
+		FluidRegistry.enableUniversalBucket();
+	}
 
 	@Mod.EventHandler
 	public void onPreInitialization(FMLPreInitializationEvent event) {
