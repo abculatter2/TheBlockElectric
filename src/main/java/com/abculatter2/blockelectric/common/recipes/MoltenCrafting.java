@@ -1,6 +1,6 @@
 package com.abculatter2.blockelectric.common.recipes;
 
-import com.abculatter2.blockelectric.common.FiniteFluidHelper;
+import com.abculatter2.blockelectric.common.helper.FiniteFluidHelper;
 import com.abculatter2.blockelectric.registry.ModFluids;
 import com.abculatter2.blockelectric.registry.ModItems;
 import com.google.common.collect.Lists;

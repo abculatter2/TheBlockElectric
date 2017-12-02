@@ -1,4 +1,4 @@
-package com.abculatter2.blockelectric.common;
+package com.abculatter2.blockelectric.common.helper;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
