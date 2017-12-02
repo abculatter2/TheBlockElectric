@@ -4,6 +4,7 @@ import com.abculatter2.blockelectric.TheBlockElectric;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -45,9 +46,15 @@ public class ModItems {
 		registerModel(plasidian, 0);
 	}
 
-	private static void registerModel(Item item, int meta) {
+	public static void registerModel(Item item, int meta) {
 		if (item.getRegistryName() != null) {
 			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		}
+	}
+
+	public static void registerModel(Item item, int meta, String dir) {
+		if (item.getRegistryName() != null) {
+			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(item.getRegistryName().getResourceDomain(), dir + "/" + item.getRegistryName().getResourcePath()), "inventory"));
 		}
 	}
 

@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+	"layer0": "blockelectric:items/tools/psteel_axe"
+  }
+}
