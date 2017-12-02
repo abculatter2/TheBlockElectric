@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemSword;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -32,6 +33,8 @@ public class ModTools {
 	public static final Item psteel_spade = Items.AIR;
 	@GameRegistry.ObjectHolder("psteel_hoe")
 	public static final Item psteel_hoe = Items.AIR;
+	@GameRegistry.ObjectHolder("psteel_shears")
+	public static final Item psteel_shears = Items.AIR;
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -41,6 +44,7 @@ public class ModTools {
 		reg.register(new Axe(ModMaterials.MATERIAL_PSTEEL, 8.0F, -3.1F).setRegistryName("psteel_axe").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_axe").setCreativeTab(ModCreativeTabs.TAB));
 		reg.register(new Spade(ModMaterials.MATERIAL_PSTEEL).setRegistryName("psteel_spade").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_spade").setCreativeTab(ModCreativeTabs.TAB));
 		reg.register(new Hoe(ModMaterials.MATERIAL_PSTEEL).setRegistryName("psteel_hoe").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_hoe").setCreativeTab(ModCreativeTabs.TAB));
+		reg.register(new ItemShears().setRegistryName("psteel_shears").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_shears").setMaxDamage(476).setCreativeTab(ModCreativeTabs.TAB));
 	}
 
 	@SubscribeEvent
@@ -51,6 +55,7 @@ public class ModTools {
 		ModItems.registerModel(psteel_axe, 0, "tool");
 		ModItems.registerModel(psteel_spade, 0, "tool");
 		ModItems.registerModel(psteel_hoe, 0, "tool");
+		ModItems.registerModel(psteel_shears, 0, "tool");
 	}
 
 	// Vanilla makes their ctors protected so we have to extend them

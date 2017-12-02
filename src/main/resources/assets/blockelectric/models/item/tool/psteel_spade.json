@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-	"layer0": "blockelectric:items/tools/psteel_spade"
+	"layer0": "blockelectric:items/tools/psteel_shovel"
   }
 }
