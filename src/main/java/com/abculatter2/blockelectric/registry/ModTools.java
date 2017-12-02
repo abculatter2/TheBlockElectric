@@ -39,11 +39,11 @@ public class ModTools {
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> reg = event.getRegistry();
-		reg.register(new ItemSword(ModMaterials.MATERIAL_PSTEEL).setRegistryName("psteel_sword").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_sword").setCreativeTab(ModCreativeTabs.TAB));
-		reg.register(new Pickaxe(ModMaterials.MATERIAL_PSTEEL).setRegistryName("psteel_pick").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_pick").setCreativeTab(ModCreativeTabs.TAB));
-		reg.register(new Axe(ModMaterials.MATERIAL_PSTEEL, 8.0F, -3.1F).setRegistryName("psteel_axe").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_axe").setCreativeTab(ModCreativeTabs.TAB));
-		reg.register(new Spade(ModMaterials.MATERIAL_PSTEEL).setRegistryName("psteel_spade").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_spade").setCreativeTab(ModCreativeTabs.TAB));
-		reg.register(new Hoe(ModMaterials.MATERIAL_PSTEEL).setRegistryName("psteel_hoe").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_hoe").setCreativeTab(ModCreativeTabs.TAB));
+		reg.register(new ItemSword(ModMaterials.TOOL_MATERIAL_PSTEEL).setRegistryName("psteel_sword").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_sword").setCreativeTab(ModCreativeTabs.TAB));
+		reg.register(new Pickaxe(ModMaterials.TOOL_MATERIAL_PSTEEL).setRegistryName("psteel_pick").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_pick").setCreativeTab(ModCreativeTabs.TAB));
+		reg.register(new Axe(ModMaterials.TOOL_MATERIAL_PSTEEL, 8.0F, -3.1F).setRegistryName("psteel_axe").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_axe").setCreativeTab(ModCreativeTabs.TAB));
+		reg.register(new Spade(ModMaterials.TOOL_MATERIAL_PSTEEL).setRegistryName("psteel_spade").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_spade").setCreativeTab(ModCreativeTabs.TAB));
+		reg.register(new Hoe(ModMaterials.TOOL_MATERIAL_PSTEEL).setRegistryName("psteel_hoe").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_hoe").setCreativeTab(ModCreativeTabs.TAB));
 		reg.register(new ItemShears().setRegistryName("psteel_shears").setUnlocalizedName(TheBlockElectric.MODID + ".psteel_shears").setMaxDamage(476).setCreativeTab(ModCreativeTabs.TAB));
 	}
 
