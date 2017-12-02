@@ -1,0 +1,29 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"model": "blockelectric:rotational",
+	"textures": {
+	  "platform": "blocks/quartz_block_lines_top",
+	  "side": "blockelectric:blocks/furnace_plate",
+	  "bottom": "blocks/piston_bottom"
+	}
+  },
+  "variants": {
+	"facing": {
+	  "down": { "x": 90 },
+	  "up": { "x": 270 },
+	  "north": { },
+	  "south": { "y": 180 },
+	  "west": { "y": 270 },
+	  "east": { "y": 90 }
+	},
+	"active": {
+	  "true": {
+		"textures": {
+		  "side": "blockelectric:blocks/furnace_plate_on"
+		}
+	  },
+	  "false": { }
+	}
+  }
+}
