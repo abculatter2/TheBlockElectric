@@ -1,7 +1,6 @@
 package com.abculatter2.blockelectric.registry;
 
 import com.abculatter2.blockelectric.TheBlockElectric;
-import com.abculatter2.blockelectric.common.fluid.BlockFluidFiniteCrafting;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -34,7 +33,7 @@ public class ModFluids {
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		event.getRegistry().register(new BlockFluidFiniteCrafting(fluidMoltenIron, Material.WATER).setRegistryName("molteniron").setUnlocalizedName(TheBlockElectric.MODID + ".molteniron"));
+		event.getRegistry().register(new BlockFluidFinite(fluidMoltenIron, Material.WATER).setRegistryName("molteniron").setUnlocalizedName(TheBlockElectric.MODID + ".molteniron"));
 	}
 
 
