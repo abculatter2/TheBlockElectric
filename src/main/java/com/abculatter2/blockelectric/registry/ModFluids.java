@@ -1,6 +1,7 @@
 package com.abculatter2.blockelectric.registry;
 
 import com.abculatter2.blockelectric.TheBlockElectric;
+import com.abculatter2.blockelectric.client.ModelRegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -26,7 +27,7 @@ public class ModFluids {
 	public static Block blockMoltenIron = Blocks.AIR;
 
 	static {
-		fluidMoltenIron = createFluid(TheBlockElectric.MODID + ".molteniron", "fluids/molteniron/fluid", true, true)
+		fluidMoltenIron = createFluid(TheBlockElectric.MODID + ".molteniron", "molteniron", true, true)
 
 				.setLuminosity(8).setDensity(3000).setViscosity(6000).setTemperature(1783);
 	}
@@ -37,15 +38,15 @@ public class ModFluids {
 	}
 
 
-	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public static void registerModels(ModelRegistryEvent event) {
-
+		ModelRegistryHelper.registerFluidModel(blockMoltenIron);
 	}
 
 	private static Fluid createFluid(String name, String textureName, boolean hasFlowIcon, boolean hasBucket) {
-		ResourceLocation still = new ResourceLocation(TheBlockElectric.MODID, textureName + "_still");
-		ResourceLocation flowing = hasFlowIcon ? new ResourceLocation(TheBlockElectric.MODID, textureName + "_flow") : still;
+		ResourceLocation still = new ResourceLocation(TheBlockElectric.MODID, "fluids/" + textureName + "/still");
+		ResourceLocation flowing = hasFlowIcon ? new ResourceLocation(TheBlockElectric.MODID, "fluids/" + textureName + "/flow") : still;
 		Fluid fluid = new Fluid(name, still, flowing);
 		if (!FluidRegistry.registerFluid(fluid))
 			fluid = FluidRegistry.getFluid(name);
