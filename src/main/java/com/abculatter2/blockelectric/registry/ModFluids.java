@@ -37,7 +37,6 @@ public class ModFluids {
 		event.getRegistry().register(new BlockFluidFinite(fluidMoltenIron, Material.WATER).setRegistryName("molteniron").setUnlocalizedName(TheBlockElectric.MODID + ".molteniron"));
 	}
 
-
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void registerModels(ModelRegistryEvent event) {

@@ -1,6 +1,7 @@
 package com.abculatter2.blockelectric.registry;
 
 import com.abculatter2.blockelectric.TheBlockElectric;
+import com.abculatter2.blockelectric.client.ModelRegistryHelper;
 import com.abculatter2.blockelectric.common.blocks.BlockFurnacePlate;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
@@ -36,13 +37,6 @@ public class ModBlocks {
 	@GameRegistry.ObjectHolder("furnace_plate")
 	public static final Block furnacePlate = Blocks.AIR;
 
-
-	private static final StateMapperBase STATE_MAPPER = new StateMapperBase() {
-		@Override
-		protected ModelResourceLocation getModelResourceLocation(@Nonnull final IBlockState state) {
-			return new ModelResourceLocation("minecraft:air");
-		}
-	};
 	private static final List<Item> itemblocks = Lists.newArrayList();
 
 	@SubscribeEvent
@@ -56,7 +50,7 @@ public class ModBlocks {
 	public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> reg = event.getRegistry();
 		registerItemBlock(reg, psteelBlock);
-		registerItemBlock(reg, furnacePlate, STATE_MAPPER.getPropertyString(furnacePlate.getDefaultState().withProperty(BlockFurnacePlate.FACING, EnumFacing.UP).getProperties()));
+		registerItemBlock(reg, furnacePlate, furnacePlate.getDefaultState().withProperty(BlockFurnacePlate.FACING, EnumFacing.UP));
 	}
 
 	@SubscribeEvent
@@ -64,7 +58,7 @@ public class ModBlocks {
 	public static void registerModels(ModelRegistryEvent event) {
 		for (Item item : itemblocks)
 			if (item.getRegistryName() != null)
-				ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), item instanceof ItemBlockVariant ? ((ItemBlockVariant) item).getVariant() : "normal"));
+				ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), item instanceof ItemBlockVariant ? ModelRegistryHelper.STATE_MAPPER.getPropertyString(((ItemBlockVariant) item).getVariant().getProperties()) : "normal"));
 	}
 
 	private static void registerItemBlock(IForgeRegistry<Item> reg, Block b) {
@@ -75,7 +69,7 @@ public class ModBlocks {
 		itemblocks.add(item);
 	}
 
-	private static void registerItemBlock(IForgeRegistry<Item> reg, Block b, String variant) {
+	private static void registerItemBlock(IForgeRegistry<Item> reg, Block b, IBlockState variant) {
 		ItemBlockVariant item = new ItemBlockVariant(b, variant);
 		if (b.getRegistryName() != null)
 			item.setRegistryName(b.getRegistryName());
@@ -93,14 +87,14 @@ public class ModBlocks {
 
 	static class ItemBlockVariant extends ItemBlock {
 
-		private final String variant;
+		private final IBlockState variant;
 
-		public ItemBlockVariant(Block block, String variant) {
+		public ItemBlockVariant(Block block, IBlockState variant) {
 			super(block);
 			this.variant = variant;
 		}
 
-		public final String getVariant() {
+		public final IBlockState getVariant() {
 			return variant;
 		}
 
